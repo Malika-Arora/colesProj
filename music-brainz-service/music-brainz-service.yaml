@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: MusicBrains service
+  description: MusicBrainz service
+  termsOfService: 'http://swagger.io/terms/'
+  license:
+    name: Apache 2.0
+    url: 'http://springdoc.org'
+  version: '1.0'
+servers:
+  - url: 'http://localhost:8080'
+    description: Generated server url
+paths:
+  '/v1/musicbrainz/getMusic/{artist}':
+    get:
+      tags:
+        - music-brainz-controller
+      description: 'Get Music By Artist/Bandname '
+      operationId: getMusicByArtist
+      parameters:
+        - name: artist
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+components: {}
